@@ -1,0 +1,82 @@
+Homework04 for book exercises
+# Credited by Zhuocai Li
+# https://github.ccs.neu.edu/CS-5001-SEA-Spring2021/student-ZhuocaiLi
+
+1. In Listing 5.4 (addnonnegatives.py) could the condition of the if statement have used > instead 
+of >= and achieved the same results? Why?
+
+Answer to #1: They will achieve the same results. Using > instead of >= may exclude entry when entry == 0; 
+however, 0 will not affect the final sum, since sum + 0 will still be 0.
+
+2. In Listing 5.4 (addnonnegatives.py) could the condition of the while statement have used > instead
+of >= and achieved the same results? Why?
+
+Answer to #2: They will achieve different results. Since at the very beginning, entry is at value of 0, if only
+using while(entry>0), this program will never get into the while loop, since the value of entry will never
+change, the sum will remain 0.
+(Unless, all the input numbers are 0 and a negative number, then these two program will both achieve the 
+same result: sum = 2.)
+
+3. In Listing 5.4 (addnonnegatives.py) what would happen if the statement
+
+entry = int(input()) # Get the value
+
+were moved out of the loop? Is moving the assignment out of the loop a good or bad thing to do?
+Why?
+
+Answer to #3: This program will be endless, and this can be a totally bad thing. Since entry will always equal 
+0, and thus always be no less than 0. This program will be stuck in the while loop, and may cause in
+program crash.
+
+4. How many asterisks does the following code fragment print?
+
+a = 0
+while a < 100:
+    print('*', end='')
+    a += 1
+print()
+
+Answer to #4: The code fragment will print 5050 asterisks.
+
+5. How many asterisks does the following code fragment print?
+
+a = 0
+while a < 100:
+    print('*', end='')
+print()
+
+Answer to #5: The code fragment will print infinite asterisks.
+
+13. Provide the exact sequence of integers specified by each of the following range expressions.
+(a) range(5)
+[0, 1, 2, 3, 4]
+
+(b) range(5, 10)
+[5, 6, 7, 8, 9]
+
+(c) range(5, 20, 3)
+[5, 8, 11, 14, 17]
+
+(d) range(20, 5, -1)
+[20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6]
+
+(e) range(20, 5, -3)
+[20, 17, 14, 11, 8]
+
+(f) range(10, 5)
+[]
+
+(g) range(0)
+[]
+
+(h) range(10, 101, 10)
+[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+(i) range(10, -1, -1)
+[10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+(j) range(-3, 4)
+[-3, -2, -1, 0, 1, 2, 3]
+
+(k) range(0, 10, 1)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]

@@ -1,0 +1,260 @@
+<h1>Spring 2021</h1>
+<h1>Midterm 1 Study Guide</h1>
+<br>
+<h2>Algorithms</h2>
+<p><b>• In very brief and general terms, what is an algorithm?</b></p>
+<p>"In mathematics and computer science, an algorithm is self-contained step-by-step set of operations to be performed."
+</p>
+<p>An algorithm is a finite sequence of steps, each step taking a finite length of time, that solves a problem
+    or computes a result.</p>
+<br>
+<p><b>• In very brief and general terms, how does Hilbert’s Decision Problem (Entscheidungsproblem) relate to
+        limitations of computers?</b></p>
+<p>Given a set of axioms and logical rules, is there a step-by-step process we can follow to decide whether an arbitrary
+    statement is provable from the axioms?</p>
+<p><b>it is not computable</b> </p>
+<br>
+<p><b>• What are some factors that go into determining whether an algorithm is “good” or “bad”?</b></p>
+<p><b>decidability</b>: is the problem solvable algorithmically?</p>
+<p><b>complexity</b>: how much time or space is required to solve the problem?</p>
+<br>
+<br>
+<h2>Variables and types
+</h2>
+<p><b>• What is the first thing that needs to happen to any variable in a Python script?</b></p>
+<p>Python variables come into existence when they are assigned a value.</p>
+<br>
+<p><b>• What is the assignment operator and what does it do?</b></p>
+<p>"=", Variables are assigned values with the = operator. </p>
+<br>
+<p><b>• Python is dynamically typed. What does this mean in terms of variables and their values?
+    </b></p>
+<p>A variable is the type of whatever value is currently assigned to it. A value of a different type can be freely
+    assigned to it later.</p>
+<br>
+<p><b>• What are the syntactic rules for naming variables? (i.e., what kinds of names will the Python interpreter
+        allow?)</b></p>
+<p>Variables names must start with a letter or an underscore</p>
+<p>The remainder of your variable name may consist of letters, numbers and underscores.</p>
+<p>Names are case sensitive.</p>
+<br>
+<p><b>• What are the numerical types available in Python that we’ve used so far? How do they differ?
+    </b></p>
+<p><b>Integer</b> Positive or negative whole numbers without decimal points</p>
+<p><b>Float</b> Positive or negative numbers of arbitrary precision represented by values to the right of a decimal
+    (floating) point</p>
+<p><b>Complex</b> Numbers with two float values representing a real and imaginary component</p>
+<br>
+<p><b>• What are the sequential data types we’ve looked at so far? What are some similarities between them?</b></p>
+<ul>
+    <li><b>String</b> Immutable (cannot be changed)</li>
+    <li><b>Tuple</b> Immutable (cannot be changed)</li>
+    <li><b>Bytes</b> Immutable (cannot be changed)</li>
+    <li><b>List</b> Mutable (can be changed)</li>
+    <li><b>Bytearray</b> Mutable (can be changed)</li>
+    <li><b>zip()</b> List can only be iterate once.</li>
+    <li><b>range()</b></li>
+</ul>
+<br>
+<p>• What is mutability? What does it mean for a type to be immutable? Which types have we seen in Python
+    are immutable? Which types are mutable? Does mutability affect assignment of values to variables? </p>
+<p><b>A new valuable can be assigned (but cannot be changed.).</b></p>
+<br>
+<p><b>• What is casting? How is it done in Python? Why/when is it necessary?</b></p>
+<p>Casting in python is done using constructor functions:</p>
+<p><b>int() float() str()</b></p>
+<p>There may be times when you want to specify (change) a type on to a variable.</p>
+<br>
+<p><b>• What are some commonly used string methods and functions? How can you find the length of a string?
+        How can you break a string into a list of substrings based on some separater (such as a space?)</b></p>
+<p>.islower() .upper() .rstrip()</p>
+<p>len(string)</p>
+<p>.split() (default)</p>
+<br>
+<h2>Arithmetic and math</h2>
+<p><b>• What do the following operators do: +, -, +=, /, //, %, *, **?
+    </b></p>
+<p>+: add to</p>
+<p>-: take away</p>
+<p>+=: increments x by y</p>
+<p>/: divided by</p>
+<p>//: floor of x divided by y</p>
+<p>%: remainder of x divided by y</p>
+<p>*: times</p>
+<p>**: x raised to y power</p>
+<br>
+<p><b>• What does the increment operator look like, and how does it behave?
+    </b></p>
+<p>+=: increments x by y</p>
+<p><b>• What are two ways of finding a square root of a number?
+    </b></p>
+<p>1. math.sqrt()</p>
+<p>2. ** 0.5</p>
+<br>
+<p><b>• What needs to be done in order to use functions from the math library module</b></p>
+<p>import math</p>
+<p><b>question: shall import math as m?</b></p>
+<br>
+<p><b>“Overloading” operators means having operators carry out different functionality in different contexts.
+        The + and * operators are both overloaded in that they have different behaviors depending on the types
+        of their operands. What are some examples of overloading of those operators?
+    </b></p>
+<p><b>+:</b></p>
+<p># add numbers</p>
+<p>print(1+2)</p>
+<p># concatenate two strings</p>
+<p>print("Geeks"+"For")</p>
+<br>
+<p><b>*:</b></p>
+<p># Product two numbers</p>
+<p>print(3 * 4)</p>
+<p># Repeat the String </p>
+<p>print("Geeks"*4)</p>
+<br>
+<h2>Booleans and conditionals
+</h2>
+<p><b>• What are the possible values of a Boolean type?</b></p>
+<p>True and False</p>
+<p></p>
+<br>
+<p><b>• What key word is used to assess whether a statement is true?
+    </b></p>
+<p>If</p>
+<br>
+<p><b>• What is the difference between == and is?</b></p>
+<p>The == operator compares the value or equality of two objects,</p>
+<p>whereas the Python is operator checks whether two variables point to the same object in memory. </p>
+<br>
+<p><b>• What do <=, <,>=, and > do?</b></p>
+<p>Comparison</p>
+<br>
+<p><b>• How are the not, and, and or operators related to Boolean values? What are these operators used for?</b></p>
+<p>More complex boolean expressions can be built out of simpler expressions, using boolean operators</p>
+<p><b>not:</b> Changes true to false, and false to true</p>
+<p><b>and:</b> True if and only if both sides are true</p>
+<p><b>or:</b> True if either side is true (or if both are true)</p>
+<br>
+<p><b>• What is the structure and meaning of an if/elif/else statement? Which parts of that structure are
+        required, which are optional, and what rules govern their ordering? (For example, can the structure begin
+        with elif? Can an elif block precede an else block?)
+    </b></p>
+<p>if(): elif(): else:</p>
+<p>decision making (conditional execution)</p>
+<p>Decision structures evaluate multiple expressions which produce TRUE or FALSE as outcome.</p>
+<p>if statement is required; else and elif statements are optional</p>
+<p>if comes first, else comes at the ned, with at most only one else</p>
+<p>the structure cannot begin
+    with elif. An elif block cannot precede an else block</p>
+<br>
+<h2>Loops</h2>
+<p><b>• In what respect are while loops and if statements similar?
+    </b></p>
+<p>the if is a one time branching operation and the while loop is as the name implies a loop.</p>
+<p>Meaning an if statement gives you once the possibility to do something or not (or something else).</p>
+<p>Whereas a while loop does things as long as the condition is true.</p>
+<br>
+<p><b>• What is necessary in order to use a for loop?</b></p>
+<p>The loop should be definite</p>
+<br>
+<p><b>• What is a simple way to implement a for loop that repeats some action a fixed number of times?
+    </b></p>
+<p>for _ in range()</p>
+<br>
+<p><b>• If a for loop begins for n in “hello”: how many times will the code in the following block
+        execute? What will the value be of n each time the block executes?</b></p>
+<p>5: "h","e","l","l","o"</p>
+<br>
+<p><b>• If a for loop begins for n in zip(range(3), “hello”): how many times will the code in
+        the following block execute? What will the value be of n each time the block executes?
+    </b></p>
+<p>(0, 'h'),
+    (1, 'e'),
+    (2, 'l')</p>
+<br>
+<p><b>• Can a for loop contain another for loop? Are there any limits on what sorts of loops and conditionals
+        can be nested in each other?
+    </b></p>
+<p>yes. (question: Not really limits???)</p>
+<br>
+<h2>Lists, tuples, and iterable objects</h2>
+<p><b>• What types of objects can be elements of lists? What restrictions are there, if any, on what types of
+        values can populate the same list together?
+    </b></p>
+<p>No limits</p>
+<br>
+<p><b>• How can a specific element of a list be accessed?</b></p>
+<p>We may access the elements contained in a list via their position (index) within the list.</p>
+<br>
+<p><b>• Lists and tuples are both ordered sequential data types. What is the most important difference between
+        lists and tuples?
+    </b></p>
+<p>list: mutable; tuple: immutable</p>
+<br>
+<p><b>• What style of loop is a list comprehension closely related to?</b></p>
+<p>for loop</p>
+<br>
+<p><b>• What does the zip() function take as arguments? What does it return? (Careful, it doesn’t return a
+        list!)
+    </b></p>
+<p>The zip() function takes iterables (can be zero or more), aggregates them in a <b>tuple</b>, and return it.</p>
+<br>
+<p><b>What do lists have in common with iterable objects such as range() and zip()?</b></p>
+<p>List can be iterable.</p>
+<br>
+<p><b>• What construction this an example of? [ord(c) for c in "Python"]</b></p>
+<p>returns integers in every character in string python, which represent the ascii numerical of c.</p>
+<br>
+<p><b>• What type of object does the code in the previous bullet point generate?
+    </b></p>
+<p>List</p>
+<br>
+<p><b>Given the following 2d list (list of lists) </b></p>
+<p><b>my_2d_list = [[‘a’,’b’,’c’], [‘d’, ‘e’, ‘f’], [‘g’, ‘h’, ‘i’]] </b></p>
+<p><b>• how specifically would you access the character ‘e’ in this data structure?
+    </b></p>
+<p>my_2d_list[1][1]</p>
+<br>
+<p><b>• How might you split a string representing a sentence into a list of strings representing words? (A naive
+        approach is fine here). </b></p>
+<p>.split()</p>
+<br>
+<h2>Libraries and modules</h2>
+<p><b>• What functionality from the sys and math libraries have we seen so far?</b></p>
+<p>sys.argv() sys.exit()</p>
+<p>math.pow(x,y) math.cos(x) math.sin(x) math.radians(x) math.sqrt(x) math.pi(CONSTANT)</p>
+<br>
+<p><b>• What is the syntax for bringing the functionality of a library into your script?</b></p>
+<p>from math import sqrt as sq</p>
+<p>from math import *</p>
+<p>import math</p>
+<p>import turtle as t</p>
+<p>t.penup()</p>
+<br>
+<h2>General Python knowledge</h2>
+<p><b>• Python is whitespace sensitive. What does this mean, and what is an example of this?
+    </b></p>
+<p>Python uses whitespace syntactically. Code blocks are delineated by indentation.</p>
+<p>for _ in range(2):</p>
+<p> print("Hello")</p>
+<br>
+<p><b>• What is a “block” of code in Python. What character indicates the start of a new block, and how is the
+        code of a block identified as such?</b></p>
+<p>A block is a piece of Python program text that is executed as a unit. Python uses indetation</p>
+<p>All statements with the same distance to the right belong to the same block of code. </p>
+<br>
+<p><b>• What is the programming “paradigm” used by Python? Is there just one?</b></p>
+<p></p>
+<p>A programming paradigm is an approach to solve the problem using some programming language or also we can say it is a
+    method to solve a problem using tools and techniques that are available to us following some approach.</p>
+<p>there are three types:</p>
+<p>Object Oriented programming paradigms</p>
+<p>Procedure Oriented programming paradigms</p>
+<p>Functional programming paradigms</p>
+<br>
+<p><b>• What style of capitalization is typically used in Python? What is it called?</b></p>
+<p>1. for comments: it should capitalize the first letter</p>
+<br>
+<p><b>• What is a REPL?
+    </b></p>
+<p>REPL stands for Read, Evaluate, Print, Loop. The REPL is how you interact with the Python Interpreter.</p>
+<p>in the REPL you can type commands and instantly see the output printed out.</p>

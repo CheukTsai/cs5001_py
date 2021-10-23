@@ -1,0 +1,48 @@
+""" Created by Zhuocai Li
+https://github.ccs.neu.edu/CS-5001-SEA-Spring2021/student-ZhuocaiLi """
+
+1. What data structures you’ll need (lists, dictionaries, etc.)
+    lists (lists of lists)
+    dictionaries (to select winners)
+
+2. What classes you’ll define
+    Chess (to draw chess)
+    Board (to draw board)
+    GameController (main controller of the program)
+
+3. What functions you’ll need (methods within classes, or other functions that exist outside of any class)
+    Chess:
+        draw_me (to draw chess)
+    Board:
+        draw_me (to draw board)
+    GameController:
+        initialize (to create list of list to store every Chess class created)
+        update (main drawing function exist in draw() in processing)
+        hold_and_drop (behaviors when player holds and drops the chess)
+        chess_color (return the correct color when player switches)
+        change_player (change player in turns)
+        check_release_spot (check the correct place in column to put chess)
+        check_game_end (return True if the board is full)
+        check_column_full (return True if a column is full)
+        check_mouse_area (return True if the mouse is put in right when human player is pressing the mouse)
+        game_over (print certain text if the game is over or a player wins)
+        check_winner (return True if a player's chesses can form a "connect 4" based on his/her chesses' positions in the list of list)
+        get_winner (return a player name if he/she wins)
+        ai_behavior (certain rules/algorithms for ai player to drop chess)
+        get_user_name (get the name of human_player)
+        output_result (put player name and his/her winning times into a file)
+
+4. A bullet-pointed pseudocode of your driver: Tell us about the flow of control, and think about the following cases:
+    When the user makes a move
+        When the game start and after computer's turn
+        The mouse will be contrained right above the board
+
+    When the disk is dropping
+        After mouse is released and if it is legal to put the disk in a certain column
+
+    When it’s the computer’s turn
+        Right after the player's turn and certain delay
+
+    When game over status is assessed
+        1. A winner shows up (either human player or ai player)
+        2. No legal move can be made (the board is full)

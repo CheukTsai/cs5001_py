@@ -1,0 +1,174 @@
+""" Created by Zhuocai Li
+https://github.ccs.neu.edu/CS-5001-SEA-Spring2021/student-ZhuocaiLi """
+
+Currently, the ai can only drop random spots :(
+
+In order to get a better or cleverer ai, I have tried to include the minimax algorithm to reach this purpose.
+*However, I failed to do that, and I will list the reason at the last part of this article.*
+
+1. Basic thoughts:
+To get a cleverer ai, which means that the ai will be able to figure out the best move for now. I take in a special
+thought called "score", which means that at each spot of the board, after some chesses has been put in, there will be
+scores recorded, and for the rest of the empty and reachable spots, the algorithm will be able to predict the scores for
+the spot.
+
+2.Algorithm: MiniMax:
+for the algorithm part: we will utilize a recursion, with the depth of 5 (current thought, not to make the program too
+heavy), to give out the score of all the available releasing spots and to return a final column for the ai to drop its 
+chess (make a move)
+Here, we have to maximize the ai player and to minimize the human player, so that for the two different, -math.inf and
+math.inf will help to initilize the program, and when meet the end (terminal node), the program will stop, with no other
+move can be made.
+In each recursion, a new board will be recorded after a move has been made. all the scores will be re-evaluated and to make sure
+that the recursion will help to find out the best move. 
+
+    # def minimax(self, board, depth, alpha, beta, maximizingPlayer):
+    #     valid_locations = self.get_valid_locations(board)
+    #     is_terminal = self.is_terminal_node(board)
+    #     if depth == 0 or is_terminal:
+    #         if is_terminal:
+    #             if self.winning_move(board, self.player_ai):
+    #                 return (None, 100000000000000)
+    #             elif self.winning_move(board, self.player_human):
+    #                 return (None, -10000000000000)
+    #             else:  # Game is over, no more valid moves
+    #                 return (None, 0)
+    #         else:  # Depth is zero
+    #             self.ai_dropping = True
+    #             return (None, self.score_position(board, self.player_ai))
+
+    #     if maximizingPlayer:
+    #         value = -100000000000
+    #         column = random.choice(valid_locations)
+    #         for col in valid_locations:
+    #             row = self.get_next_open_row(board, col)
+    #             b_copy = copy.deepcopy(board)
+    #             new_score = self.minimax(
+    #                 b_copy, depth-1, alpha, beta, False)[1]
+    #             if new_score > value:
+    #                 value = new_score
+    #                 column = col
+    #             alpha = max(alpha, value)
+    #             if alpha >= beta:
+    #                 break
+    #         print(column, value)
+    #         return column, value
+
+    #     else:  # Minimizing player
+    #         value = 100000000000
+    #         column = random.choice(valid_locations)
+    #         for col in valid_locations:
+    #             row = self.get_next_open_row(board, col)
+    #             b_copy = copy.deepcopy(board)
+    #             new_score = self.minimax(b_copy, depth-1, alpha, beta, True)[1]
+    #             if new_score < value:
+    #                 value = new_score
+    #                 column = col
+    #             beta = min(beta, value)
+    #             if alpha >= beta:
+    #                 break
+    #         return column, value
+
+3. Scores:
+
+for the Scores part, if certain area have certain amount of self chesses and opponent's chesses, an evaluation function
+will help to detremine how many scors for a certain user will be recorded:
+
+    # def evaluate_window(self, window, player):
+    #     score = 0
+    #     opp_player = self.player_human
+    #     if player == self.player_human:
+    #         opp_player = self.player_ai
+
+    #     if window.count(player) == 4:
+    #         score += 100
+    #     elif window.count(player) == 3 and window.count(0) == 1:
+    #         score += 5
+    #     elif window.count(player) == 2 and window.count(0) == 2:
+    #         score += 2
+
+    #     if window.count(opp_player) == 3 and window.count(0) == 1:
+    #         score -= 4
+
+    #     return score
+
+Here, the points will be evaluated much more in "steps" with a longer distance when a winning or losing is nearer. Thus.
+there will be 2, 5, 100 points rather than 1, 2, 3 points.
+
+and score points will be collected with different winning methods: vertical/ horizontal/ positive sloped/ negative sloped
+
+    # def score_position(self, board, player):
+    #     score = 0
+
+    #     center_array = [int(i) for i in list(board[self.column_total//2])]
+    #     center_count = center_array.count(player)
+    #     score += center_count * 3
+
+    #     # Score Horizontal
+    #     row_array = []
+    #     for c in range(self.column_total-3):
+    #         for r in range(self.row_total):
+    #             window = [board[c+i][r] for i in range(4)]
+    #             score += self.evaluate_window(window, player)
+
+    #     # Score Vertical
+    #     for c in range(self.column_total):
+    #         for r in range(self.row_total-3):
+    #             window = [board[c][r+i] for i in range(4)]
+    #             score += self.evaluate_window(window, player)
+
+    #     # Score positive sloped diagonal
+    #     for r in range(self.row_total-3):
+    #         for c in range(self.column_total-3):
+    #             window = [board[c+i][r+i] for i in range(4)]
+    #             score += self.evaluate_window(window, player)
+
+    #     # Score positive sloped diagonal
+    #     for c in range(self.column_total-3):
+    #         for r in range(self.row_total-3):
+    #             window = [board[c+i][r+3-i] for i in range(4)]
+    #             score += self.evaluate_window(window, player)
+
+    #     print(score)
+    #     return score
+
+4. Board:
+for the board, I used to use the Chess class and put whole classes into the board list, thus it would be complicated
+when we need to get the player variable from them. So I created a new board (Integer List) to collect only 0 for empty 
+spot, 1 for human player and 2 for ai player:
+
+        # self.chess_board = [
+        #     [0 for _ in range(self.row_total)] for _ in range(
+        #       self.column_total)]
+
+Every time a human made a move:
+    # self.chess_board[self.column][self.row] = 1
+
+Every time an ai made a move:
+    # self.chess_board[self.column_ai][self.row_ai] = 2
+
+to get a much cleaner list, and easier to evaluate scores.
+And the following part has been remodified, based on the new board:
+
+    # def is_valid_location(self, board, col):
+    #     return board[col][self.row_total-1] == 0
+
+    # def get_valid_locations(self, board):
+    #     valid_locations = []
+    #     for col in range(self.column_total):
+    #         if self.is_valid_location(board, col):
+    #             valid_locations.append(col)
+    #     return valid_locations
+
+    # def get_next_open_row(self, board, col):
+    #     for r in range(self.row_total):
+    #         if board[col][r] == 0:
+    #             return r
+
+5. Problems:
+This ai program has failed.
+I seem not to be very able to handle the draw() function in processing, the endless while loop.
+My minimax always seems to come out with wrong value due to not able to control flags for it to
+know when to drop the chess.
+For the future, in order to modify this program, some flags I think I will put in the program to tell
+ai when is the time to drop the chess, after a decision has been made. 

@@ -1,0 +1,140 @@
+##[Solution for Exercise 1: The robot typist]
+
+Assumption fo the robot:
+1. Able to consume priting papers and to measure the proper length and width of the paper.
+2. Able to print out English characters, punctuations and spaces
+3. Able to understand numbers, at least integers (1,2,3,4 ... )
+4. Able to do math
+
+For every handbill:
+[STEP 1] After consuming the our input information, the robot will count number of rows and the number of words in each line;
+[STEP 2] With the number of lines (x), the robot will calculate the beginning line in the paper (25-x)/2+1; // (25-x)/2 should be the largest integer
+[STEP 3] Start with the beginning line;
+[STEP 4] With the number of characters in the line (y), the robot will calculate the start point in this row (60-y)/2+1; // (60-y)/2 should be the largest integer
+[STEP 5] Print out charaters in this line;
+[STEP 6] Go to the next line, repeat [STEP 4] and [STEP 5], until no more lines remain;
+[STEP 7] Print the paper.
+
+Robot will be asked to do the same job for every handbill, until all information is printed out.
+
+[Important P.S.]
+I first assume that the handbills we write all will have less than 60 characters in each lines to make it neat. If not, then the robot will first have to REPROCESS the information: 
+to follow the English witing habits, robot will have to do line by line, words by words: if the number of characters of some words is over 60, the last word should be put in the next line.
+
+
+
+##[Solution for Exercise 2: Remainders]
+
+[STEP 1] Get the numerator (a) and the denominator (b);
+[STEP 2] Caculate a/b, get the output (c);
+[STEP 3] Find the integer part of c (d);
+[STEP 4] Calculate a-d*b, output the result.
+
+The output of this 4 steps will be the remainders of the division of the two input numbers.
+
+##[Solution for Exercise 3: Triangle types]
+
+[STEP 1] For the three sides of the triangle, compare the length of them: define the longest as "a", and the rest will be "b" and "c";
+[STEP 2] Caculate the square of a, b and c (a^2, b^2 and c^2);
+[STEP 3] If a^2 = b^2+c^2, the triangle will be a right triangle, and go to [STEP 5]. If not, go to [STEP 4];
+[STEP 4] If a^2 > b^2+c^2, the triangle will be an acute triangle. If not, the triangle will be an obtuse triangle. Go to [STEP 5];
+[STEP 5] a^2 = b^2 and b^2 = c^2, the triangle will be an equilateral triangle. If not, go to [STEP 6]
+[STEP 6] b^2 = c^2, the triangle will be a scalene triangle. If not, the triangle will be an isoceles triangle.
+[STEP 7] Gather the results and get the output.
+
+##[Solution for Exercise 4: The radio show]
+
+[STEP 1] Write down the information and answering time of the first caller on the business card;
+[STEP 2] Compare the time of the next caller with the existing time on the business card;
+[STEP 3] If the time of the next caller is less than the existing one, erase all the existing information and write down the information and answering time of the new caller.
+If not, ignore this caller.
+[STEP 4] Get the next caller, repeat [STEP 2] and [STEP 3], until the 8 hour shift ends.
+
+##[Solution for Exercise 5: Dot-to-dot transmission]
+
+My partner will get a blank paper. All he/she gets are the paper and a ruler.
+[STEP 1] CONFIRMING THE FIRST DOT: Set the right-bottom and the (0,0) of an axis. I will tell him/her the x and y (how many inches to get left and up) to find the first spot;
+[STEP 2] CONFIRMING THE FOLLOWING DOT: I will tell him/her the x and y to find the next spot;
+[STEP 3] CONNECTING THE DOTS: I will ask him/her to connect the dot with the previous dot with the ruler;
+[STEP 4] REPEATING: Repeat [STEP 2] and [STEP 3], until I tell him/her it is the last dot;
+[STEP 5] CONNECTING FIRST AND LAST DOTS: After I tell him/her it is the last dot, I will tell him/her to connect the last dot with the first dot.
+
+##[Solution for Exercise 6: Celebrity finder]
+
+[STEP 1] Start with all people in the party;
+[STEP 2] Select one of the people in this group (call him/her "a"), ask who he/she knows. Those people "a" knows will be a new set of people;
+[STEP 3] Ask all this set of people if they know "a": if they don't, record them and put them in a set;
+[STEP 4] Check if the number of this new set of people ("a" knows them but they don't know "a") equals 1 or not. If YES, then this person is the celeabrity. 
+If NOT, repeat [STEP 2], [STEP 3] and [STEP 4] until there is only 1 person in the set.
+
+##[Solution for Exercise 7: Poker hands]
+
+[Designing thoughts] After connecting the two inputs, this program will first try to compare the ranks of the two hands. However, They could be in the same rank. 
+If they do so, they will need unique comparison. 
+Thus, the process will be: 1. Read the cards; 2. Compare the ranks; 3. Compare in the same rank (if necessary).
+
+Before the process, I set a "rank" for every rankings":
+Royal Flush: 1
+Straight Flush: 2
+Four of a Kind: 3
+Full House: 4
+Flush: 5
+Striaght: 6
+Three of a kind: 7
+Two Pair: 8
+Pair: 9
+High Card: 10
+
+1. Reading Cards
+[STEP 1] Reorder the cards, put them in descend orders (Order will be like: A, K, Q, J, 10, 9, 8, 7, 6, 5, 4 ,3, 2)
+
+[STEP 2] Record the length of the longest sequence of same number in each hand (x), and record the second longest sequence of the same number(y).
+// This step is much like Exercise 4: The radio show, the only difference is to record two numbers. 
+
+[STEP 3] Determine the rank:
+If x equals 4, it will be a Four of a Kind, note down rank 3.
+If x equals 3 and y equals 2, it will be Full House, note down rank 4; 
+if x equals 3 and y equals 1, it will be Three of a kind, note down rank 7.
+If x equals 2 and y equals 2, it will be Two Pair, note down rank 8; 
+if x equals 2 and y equals 1, it will be Pair, note down rank 9.
+if x equals 1, go to [STEP 4].
+
+[STEP 4] Determine Royal Flush / Straight Flush / Flush / Striaght / High Card
+(step 4.1) Record the value and suit of the first card.
+
+(step 4.2) Compare the value and suit of the next card with the previous one's. 
+If the value of the next card is not 1 less than the previous one's, go to (step 4.3)
+If the suit of the next card is not the same as the previous one's, go to  (step 4.4)
+Repeat and stop until the last card,:
+If the value of the first card is A, then it will be a Royal Flush, note down rank 1.
+If not, then it will be a Straight Flush, note down rank 2.
+
+(step 4.3) Compare the suit of the next card with the previous one's: 
+If the suit of the next card is not the same as the previous one's, it will be High Card, note down rank 10.
+Repeat and stop until the last card, then it will be a Flush, note down rank 5.
+
+(step 4.4) Compare the value of the next card with the previous one's: 
+If the value of the next card is not the same as the previous one's, it will be High Card, note down rank 10.
+Repeat and stop until the last card, then it will be a Striaght, note down rank 6.
+
+//Finish Reading cards.
+
+2. Compare the ranks:
+Simply compare the ranks in two hands. If they are different, find out the winning one;
+If not, go to 3. Compare in the same rank (if necessary).
+
+3. Compare in the same rank (if necessary).
+// Different rules exist within every ranks. I will write down every comparison in each rank.
+// Basically, rules are 1. comparing the biggest card and 2. comparing the cards that's same in the hand (like Full House)
+
+[Royal Flush] Compare the largest card: Read the largest card in two hands (value and suit), do the comparison.
+[Straight Flush] Compare the largest card: Read the largest card in two hands (value and suit), do the comparison.
+[Four of a Kind] Compare the value of the "4" card: Read the value of the 4 same cards, do the comparison.
+[Full House] Compare the value of the "3" card: Read the value of the 3 same cards, do the comparison.
+[Flush] Compare the largest card: Read the largest card in two hands (value and suit), do the comparison.
+[Striaght] Compare the largest card: Read the largest card in two hands (value and suit), do the comparison.
+[Three of a kind] Compare the value of the "3" card: Read the value of the 3 same cards, do the comparison.
+[Two Pair] Compare the largest card: Read the largest card in two hands (value and suit), do the comparison; if the same, compare the next pair.
+[Pair] Compare the value of the "2" card: Read the value of the 3 same cards, do the comparison.
+[High Card] Compare the largest card: Read the largest card in two hands (value and suit), do the comparison; if the same, compare the next card.
+
